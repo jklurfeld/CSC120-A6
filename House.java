@@ -1,12 +1,63 @@
-/* This is a stub for the House class */
-public class House {
+import java.util.ArrayList;
 
-  public House() {
-    System.out.println("You have built a house: 🏠");
+/* the House class */
+public class House extends Building{
+  ArrayList<String> residents;
+  boolean hasDiningRoom;
+
+  /* Constructor */
+  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+    super(name, address, nFloors);
+    residents = new ArrayList<String>();
+    this.hasDiningRoom = hasDiningRoom;
+
+  }
+  /*
+   * accessor for the hasDiningRoom attribute
+   * @return boolean returns true if the house has a dining room
+   */
+  public boolean hasDiningRoom(){
+    return hasDiningRoom;
+  }
+
+  /*
+   * returns the number of residents in the house
+   * @return int number of residents in the house
+   */
+  public int nResidents(){
+    return residents.size();
+  }
+
+  /*
+   * adds a resident to the list of residents in the house
+   * @param name of the resident to be moved in
+   */
+  public void moveIn(String name){
+    residents.add(name);
+  }
+
+  /*
+   * removes a resident from the list of residents in the house
+   * @param name of the resident to be removed
+   * @return name of the resident removed
+   */
+  public String moveOut(String name){
+    residents.remove(name);
+    return name;
+  }
+
+  /*
+   * method that returns true if the given person is a resident of the house
+   * @param name of the person to be checked
+   * @return boolean returns true if the given person is a resident of the house
+   */
+  public boolean isResident(String person){
+    return residents.contains(person);
   }
 
   public static void main(String[] args) {
-    new House();
+    House lamont = new House("Lamont", "17 Prospect Street", 4, true);
+    System.out.println(lamont);
   }
 
 }
